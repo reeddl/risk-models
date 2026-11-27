@@ -1,5 +1,6 @@
 """Barra/Axioma-style fundamental equity factor model."""
 
+from .benchmark import compare_factor_returns, compound
 from .config import DEFAULT_ORTHOGONALIZE, DEFAULT_STYLE_COMPOSITES, FactorModelConfig
 from .exposures import MARKET, exposure_matrix, factor_groups, industry_factor, style_exposures
 from .model import FactorModel, FactorModelResult, regression_periods
@@ -8,6 +9,8 @@ from .risk import RiskDecomposition, RiskModel
 from .specific_risk import bayesian_shrinkage, size_buckets
 
 __all__ = [
+    "compare_factor_returns",
+    "compound",
     "DEFAULT_ORTHOGONALIZE",
     "DEFAULT_STYLE_COMPOSITES",
     "MARKET",

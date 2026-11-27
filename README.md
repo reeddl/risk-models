@@ -21,10 +21,12 @@ src/riskmodels/
     preprocessing.py winsorize, standardize, fill, orthogonalize
     covariance.py    EWMA, Newey-West, correlation shrinkage, PSD repair
     synthetic.py     synthetic market with a known factor structure (tests, demos)
+  sources/         public data loaders (Yahoo, EDGAR, FRED, AQR, FINRA)
   factor_model/    one folder per model, each with its own README
 tests/
   core/            tests for the shared code
   factor_model/    tests for the factor model
+  sources/         offline tests for the data loaders
 ```
 
 Why one package with a folder per model rather than independent projects: the later
@@ -48,8 +50,13 @@ The contract every loader must meet is documented at the top of
   (`available_date`); restatements are new rows, originals are kept.
 - **Effective-dated industries:** a reclassification is only visible from its date.
 
-No real data loader ships yet. The test suite and examples use
-`riskmodels.core.synthetic.generate_market_data`.
+`riskmodels.sources.PublicDataLoader` builds the bundle from free public data: Yahoo
+Finance prices, SEC EDGAR fundamentals, SIC industries and filer history, FRED rates, AQR
+benchmark factors and FINRA short interest. It approximates the contract above; what stays
+biased (mainly delisted names, which Yahoo does not carry) is in
+[`sources/README.md`](src/riskmodels/sources/README.md). The test suite uses
+`riskmodels.core.synthetic.generate_market_data` and recorded-format sample responses, so it
+runs offline.
 
 ## Development
 
@@ -58,4 +65,5 @@ pip install -e ".[dev]"
 pytest
 ```
 
-Dependencies are numpy and pandas only.
+Dependencies are numpy and pandas only. Reading AQR's Excel files needs the optional
+`aqr` extra (`pip install -e ".[aqr]"`, which adds openpyxl).
