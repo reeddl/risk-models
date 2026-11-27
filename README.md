@@ -7,7 +7,7 @@ package so every model shares the same data contracts and estimation code.
 |---|---|---|
 | Fundamental equity factor model (Barra/Axioma style) | [`src/riskmodels/factor_model`](src/riskmodels/factor_model/README.md) | v0.1 |
 | Position sizing (conviction, risk budget, caps, beta and vol targets) | [`src/riskmodels/position_sizing`](src/riskmodels/position_sizing/README.md) | v0.1 |
-| VaR / CVaR | `src/riskmodels/var` | planned |
+| VaR / CVaR (parametric primary, EWMA historical cross-check, limits, backtests) | [`src/riskmodels/var`](src/riskmodels/var/README.md) | v0.1 |
 | Liquidity risk | `src/riskmodels/liquidity` | planned |
 | Stress testing | `src/riskmodels/stress` | planned |
 
@@ -24,10 +24,12 @@ src/riskmodels/
   sources/         public data loaders (Yahoo, EDGAR, FRED, AQR, FINRA)
   factor_model/    one folder per model, each with its own README
   position_sizing/ conviction scores to capped, beta- and vol-targeted weights
+  var/             VaR / CVaR, component VaR, limits and backtests
 tests/
   core/            tests for the shared code
   factor_model/    tests for the factor model
   position_sizing/ tests for the sizing model
+  var/             tests for VaR / CVaR
   sources/         offline tests for the data loaders
 ```
 
