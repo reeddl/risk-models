@@ -6,7 +6,7 @@ package so every model shares the same data contracts and estimation code.
 | Model | Folder | Status |
 |---|---|---|
 | Fundamental equity factor model (Barra/Axioma style) | [`src/riskmodels/factor_model`](src/riskmodels/factor_model/README.md) | v0.1 |
-| Position sizing | `src/riskmodels/position_sizing` | planned |
+| Position sizing (conviction, risk budget, caps, beta and vol targets) | [`src/riskmodels/position_sizing`](src/riskmodels/position_sizing/README.md) | v0.1 |
 | VaR / CVaR | `src/riskmodels/var` | planned |
 | Liquidity risk | `src/riskmodels/liquidity` | planned |
 | Stress testing | `src/riskmodels/stress` | planned |
@@ -23,9 +23,11 @@ src/riskmodels/
     synthetic.py     synthetic market with a known factor structure (tests, demos)
   sources/         public data loaders (Yahoo, EDGAR, FRED, AQR, FINRA)
   factor_model/    one folder per model, each with its own README
+  position_sizing/ conviction scores to capped, beta- and vol-targeted weights
 tests/
   core/            tests for the shared code
   factor_model/    tests for the factor model
+  position_sizing/ tests for the sizing model
   sources/         offline tests for the data loaders
 ```
 
